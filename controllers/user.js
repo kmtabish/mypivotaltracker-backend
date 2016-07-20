@@ -4,10 +4,15 @@ module.exports = {
   login: function (req, res) {
     if (req.body.username && req.body.password) {
       tracker.getToken(req.body.username, req.body.password, function (error, token) {
-        res.send({userToken: token})
+        if(error)
+          res.status(404).send('No user found');
+        else
+          if(token){
+            res.status(200).res.send({token : token});
+          }
       });
     }else{
-      res.status(500).send('internal server error');
+      res.send({statusCode: "500"})
     }
   },
   verifyToken: function (req, res) {
