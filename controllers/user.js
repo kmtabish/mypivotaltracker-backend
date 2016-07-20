@@ -8,7 +8,7 @@ module.exports = {
           res.status(404).send('No user found');
         else
           if(token){
-            res.status(200).res.send({token : token});
+           res.send({token : token});
           }
       });
     }else{
