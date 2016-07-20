@@ -5,6 +5,8 @@ var tracker = require('pivotaltracker');
 var user = '***********';
 var password = '******';
 var a = "";
+var projectController = require('./controllers/project');
+var epicController = require('./controllers/epic');
 
 var client = tracker.Client();
 
