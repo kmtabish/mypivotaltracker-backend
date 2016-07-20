@@ -5,6 +5,12 @@ var tracker = require('pivotaltracker');
 
 var client = tracker.Client();
 
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "X-Requested-With");
+  next();
+});
+
 app.get('/token/:appid', function (req, res) {
    res.send( req.params.appid);
 });
@@ -67,3 +73,4 @@ app.get('/epic/:appid/:projectId/:epicId', function (req, res) {
 app.listen(3001, function () {
   console.log('Example app listening on port 3000!');
 });
+
